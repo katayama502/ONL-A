@@ -1141,7 +1141,7 @@ const statsObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       animateCounter(document.getElementById('stat1'), 730, '');
-      animateCounter(document.getElementById('stat2'), 20, '');
+      animateCounter(document.getElementById('stat2'), 35, '');
       statsObserver.disconnect();
     }
   });
