@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ONL-A | 2年間の軌跡 2024–2024</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700;900&family=Bebas+Neue&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ocean-deep: #0a1628;
+    --ocean-mid: #0d2444;
+    --ocean-teal: #0e5f8a;
+    --ocean-cyan: #1a9fc0;
+    --ocean-light: #7cd4ea;
+    --sky-blue: #b8e8f5;
+    --white: #f0f8ff;
+    --gold: #d4a843;
+    --gold-light: #f0c96a;
+    --text-main: #e8f4f8;
+    --text-sub: #8ec9e0;
+    --accent-blue: #00c8ff;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--ocean-deep);
+    color: var(--text-main);
+    font-family: 'Noto Sans JP', sans-serif;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* Custom cursor */
+  .cursor {
+    position: fixed;
+    width: 12px; height: 12px;
+    background: var(--accent-blue);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s, opacity 0.3s;
+    mix-blend-mode: screen;
+  }
+  .cursor-ring {
+    position: fixed;
+    width: 36px; height: 36px;
+    border: 1.5px solid var(--ocean-cyan);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: transform 0.25s cubic-bezier(.18,.89,.32,1.28), opacity 0.3s;
+    opacity: 0.6;
+  }
+
+  /* ======== HERO ======== */
+  #hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: linear-gradient(160deg, #060e1d 0%, #0a1628 40%, #0d2a4a 70%, #0e3d65 100%);
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    overflow: hidden;
+  }
+
+  /* Animated water blobs */
+  .blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.18;
+    animation: blobFloat 12s ease-in-out infinite;
+  }
+  .blob1 { width: 600px; height: 600px; background: radial-gradient(circle, #1a9fc0, #0a3a6e); top: -10%; left: -10%; animation-delay: 0s; }
+  .blob2 { width: 500px; height: 500px; background: radial-gradient(circle, #0e5f8a, #0d2444); top: 30%; right: -5%; animation-delay: 3s; }
+  .blob3 { width: 400px; height: 400px; background: radial-gradient(circle, #7cd4ea, #0a1628); bottom: 0%; left: 20%; animation-delay: 6s; }
+
+  @keyframes blobFloat {
+    0%, 100% { transform: translate(0,0) scale(1); }
+    33% { transform: translate(30px,-20px) scale(1.05); }
+    66% { transform: translate(-20px,15px) scale(0.95); }
+  }
+
+  /* Wave SVG at bottom of hero */
+  .hero-wave {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    line-height: 0;
+  }
+  .hero-wave svg { display: block; width: 100%; }
+
+  /* Stars / particles */
+  .particle {
+    position: absolute;
+    width: 2px; height: 2px;
+    background: #fff;
+    border-radius: 50%;
+    opacity: 0;
+    animation: twinkle var(--d) ease-in-out infinite var(--delay);
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: 0; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.5); }
+  }
+
+  .hero-year {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(80px, 15vw, 180px);
+    letter-spacing: 0.05em;
+    line-height: 1;
+    background: linear-gradient(135deg, #ffffff 0%, #7cd4ea 40%, #1a9fc0 70%, #0e5f8a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    z-index: 2;
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeUp 1.2s cubic-bezier(.22,.68,0,1.2) 0.3s forwards;
+  }
+
+  .hero-dash {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin: 8px 0 24px;
+    z-index: 2;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.7s forwards;
+  }
+  .hero-dash-line {
+    height: 1px;
+    width: 80px;
+    background: linear-gradient(90deg, transparent, var(--ocean-cyan));
+  }
+  .hero-dash-line.rev { background: linear-gradient(90deg, var(--ocean-cyan), transparent); }
+  .hero-dash-text {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 13px;
+    letter-spacing: 0.4em;
+    color: var(--text-sub);
+    text-transform: uppercase;
+  }
+
+  .hero-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(28px, 5vw, 64px);
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-align: center;
+    line-height: 1.2;
+    z-index: 2;
+    opacity: 0;
+    animation: fadeUp 1s ease 1s forwards;
+  }
+  .hero-title span {
+    background: linear-gradient(135deg, var(--accent-blue), var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-sub {
+    margin-top: 20px;
+    font-size: 14px;
+    letter-spacing: 0.3em;
+    color: var(--text-sub);
+    z-index: 2;
+    opacity: 0;
+    animation: fadeUp 1s ease 1.3s forwards;
+  }
+
+  .scroll-indicator {
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    z-index: 2;
+    opacity: 0;
+    animation: fadeIn 1s ease 2s forwards;
+  }
+  .scroll-indicator span {
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    color: var(--text-sub);
+  }
+  .scroll-line {
+    width: 1px;
+    height: 50px;
+    background: linear-gradient(to bottom, var(--ocean-cyan), transparent);
+    animation: scrollLine 1.8s ease-in-out infinite;
+  }
+  @keyframes scrollLine {
+    0% { transform: scaleY(0); transform-origin: top; }
+    50% { transform: scaleY(1); transform-origin: top; }
+    51% { transform: scaleY(1); transform-origin: bottom; }
+    100% { transform: scaleY(0); transform-origin: bottom; }
+  }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+
+  /* ======== PHILOSOPHY SECTION ======== */
+  #philosophy {
+    padding: 120px 24px;
+    background: linear-gradient(to bottom, #0e3d65, #0a1628);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .section-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.5em;
+    color: var(--ocean-cyan);
+    text-align: center;
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(28px, 4vw, 52px);
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 80px;
+    color: var(--white);
+  }
+
+  /* Big AA display */
+  .aa-display {
+    text-align: center;
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(100px, 20vw, 220px);
+    font-weight: 900;
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(28,159,192,0.3);
+    position: relative;
+    margin-bottom: 40px;
+    user-select: none;
+  }
+  .aa-display::after {
+    content: '人A＆';
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #7cd4ea 0%, #1a9fc0 40%, #0e5f8a 80%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    opacity: 0.15;
+    font-size: clamp(100px, 20vw, 220px);
+  }
+
+  /* Equation box */
+  .equation-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-bottom: 80px;
+  }
+
+  .equation-card {
+    background: rgba(14, 95, 138, 0.15);
+    border: 1px solid rgba(28,159,192,0.25);
+    border-radius: 16px;
+    padding: 28px 48px;
+    backdrop-filter: blur(10px);
+    text-align: center;
+    transition: transform 0.4s, border-color 0.4s;
+  }
+  .equation-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--ocean-cyan);
+  }
+  .equation-text {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(20px, 3vw, 36px);
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 0.05em;
+  }
+  .equation-text .plus { color: var(--ocean-cyan); margin: 0 8px; }
+  .equation-text .equals { color: var(--gold); margin: 0 8px; }
+  .equation-text .result {
+    color: var(--gold-light);
+    font-size: 1.3em;
+  }
+
+  /* Three pillars */
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .pillar-card {
+    position: relative;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(28,159,192,0.2);
+    border-radius: 20px;
+    padding: 40px 32px;
+    overflow: hidden;
+    transition: transform 0.4s, box-shadow 0.4s;
+  }
+  .pillar-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--ocean-teal), var(--accent-blue), var(--ocean-teal));
+    background-size: 200% 100%;
+    animation: shimmer 3s linear infinite;
+  }
+  @keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+  .pillar-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 24px 60px rgba(0,200,255,0.12);
+  }
+  .pillar-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 64px;
+    color: rgba(28,159,192,0.12);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .pillar-tag {
+    display: inline-block;
+    background: rgba(28,159,192,0.15);
+    border: 1px solid rgba(28,159,192,0.3);
+    border-radius: 100px;
+    padding: 4px 16px;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    color: var(--ocean-cyan);
+    margin-bottom: 16px;
+  }
+  .pillar-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--white);
+  }
+  .pillar-desc {
+    font-size: 15px;
+    line-height: 2;
+    color: var(--text-sub);
+  }
+
+  /* ======== MEMORIES SECTION ======== */
+  #memories {
+    padding: 120px 24px;
+    background: var(--ocean-deep);
+    position: relative;
+  }
+
+  .memories-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    gap: 20px;
+  }
+
+  .memory-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(28,159,192,0.15);
+    border-radius: 16px;
+    padding: 32px 28px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s, border-color 0.4s, box-shadow 0.4s;
+  }
+  .memory-card:hover {
+    transform: translateY(-6px) scale(1.01);
+    border-color: rgba(28,159,192,0.5);
+    box-shadow: 0 20px 50px rgba(0,200,255,0.1);
+  }
+  .memory-card.wide { grid-column: span 2; }
+  .memory-card.tall { grid-row: span 2; }
+
+  .memory-card .glow {
+    position: absolute;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(28,159,192,0.15), transparent 70%);
+    pointer-events: none;
+    top: -60px; right: -60px;
+  }
+
+  .memory-date {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.3em;
+    color: var(--ocean-cyan);
+    margin-bottom: 12px;
+  }
+  .memory-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 12px;
+    line-height: 1.5;
+  }
+  .memory-text {
+    font-size: 14px;
+    line-height: 2;
+    color: var(--text-sub);
+  }
+  .memory-emoji {
+    font-size: 48px;
+    margin-bottom: 16px;
+    display: block;
+    filter: drop-shadow(0 0 12px rgba(0,200,255,0.3));
+  }
+
+  /* ======== TIMELINE ======== */
+  #timeline {
+    padding: 120px 24px;
+    background: linear-gradient(to bottom, #0a1628, #060e1d);
+    position: relative;
+  }
+
+  .timeline-wrapper {
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+    padding-left: 40px;
+  }
+  .timeline-line {
+    position: absolute;
+    left: 0;
+    top: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--ocean-cyan) 10%, var(--ocean-teal) 90%, transparent);
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 56px;
+    opacity: 0;
+    transform: translateX(20px);
+    transition: opacity 0.6s, transform 0.6s;
+  }
+  .timeline-item.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  .timeline-dot {
+    position: absolute;
+    left: -46px;
+    top: 8px;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--ocean-cyan);
+    box-shadow: 0 0 0 4px rgba(28,159,192,0.2), 0 0 16px var(--ocean-cyan);
+  }
+  .timeline-period {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.4em;
+    color: var(--ocean-cyan);
+    margin-bottom: 8px;
+  }
+  .timeline-content-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+  .timeline-content-text {
+    font-size: 14px;
+    line-height: 2;
+    color: var(--text-sub);
+  }
+
+  /* ======== MESSAGE SECTION ======== */
+  #message {
+    padding: 140px 24px;
+    background: linear-gradient(160deg, #060e1d 0%, #0a1f3d 50%, #060e1d 100%);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .message-bg-text {
+    position: absolute;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(80px, 18vw, 200px);
+    color: rgba(28,159,192,0.04);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    pointer-events: none;
+    letter-spacing: 0.1em;
+  }
+
+  .quote-mark {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 80px;
+    line-height: 0.5;
+    color: rgba(28,159,192,0.3);
+    display: block;
+    margin-bottom: 24px;
+  }
+
+  .message-text {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(18px, 3vw, 32px);
+    font-weight: 400;
+    line-height: 2.2;
+    color: var(--white);
+    max-width: 800px;
+    margin: 0 auto 48px;
+    position: relative;
+    z-index: 1;
+  }
+  .message-text strong {
+    color: var(--gold-light);
+    font-weight: 700;
+  }
+
+  .message-sign {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 16px;
+    letter-spacing: 0.3em;
+    color: var(--text-sub);
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ======== FOOTER ======== */
+  footer {
+    background: #030810;
+    padding: 60px 24px 40px;
+    text-align: center;
+    border-top: 1px solid rgba(28,159,192,0.15);
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 56px;
+    letter-spacing: 0.15em;
+    background: linear-gradient(135deg, #7cd4ea, #1a9fc0, #0e5f8a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+  }
+
+  .footer-sub {
+    font-size: 12px;
+    letter-spacing: 0.4em;
+    color: var(--text-sub);
+    margin-bottom: 40px;
+  }
+
+  .footer-phrase {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 14px;
+    line-height: 2.5;
+    color: rgba(140,201,224,0.6);
+  }
+
+  .footer-copy {
+    margin-top: 40px;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: rgba(140,201,224,0.3);
+  }
+
+  /* ======== NAV ======== */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 48px;
+    background: rgba(10,22,40,0.7);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(28,159,192,0.1);
+    transition: background 0.3s;
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 0.2em;
+    color: var(--white);
+  }
+  .nav-logo span { color: var(--ocean-cyan); }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 12px;
+    letter-spacing: 0.25em;
+    color: var(--text-sub);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--accent-blue); }
+  
+  /* ======== RADIO SECTION ======== */
+  #radio {
+    padding: 120px 24px;
+    background: linear-gradient(to bottom, var(--ocean-deep), #0c2a4a);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .radio-container {
+    max-width: 1000px;
+    margin: 40px auto 0;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(28, 159, 192, 0.2);
+    border-radius: 24px;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+    aspect-ratio: 16 / 10;
+    min-height: 500px;
+  }
+
+  .radio-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    filter: none; /* Notion sometimes has its own theme, we'll keep it clean */
+  }
+
+  @media (max-width: 768px) {
+    #radio { padding: 80px 16px; }
+    .radio-container { aspect-ratio: 9 / 16; min-height: 600px; }
+  }
+
+  .memory-icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 16px;
+    display: block;
+    object-fit: contain;
+    filter: drop-shadow(0 0 15px rgba(0, 200, 255, 0.4));
+    transition: transform 0.4s ease;
+  }
+  .memory-card:hover .memory-icon {
+    transform: scale(1.1) translateZ(20px);
+  }
+
+  .radio-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    text-decoration: none;
+    overflow: hidden;
+  }
+  .radio-link img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .radio-link:hover img {
+    transform: scale(1.05);
+  }
+  .radio-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 22, 40, 0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    backdrop-filter: blur(2px);
+  }
+  .radio-link:hover .radio-overlay {
+    opacity: 1;
+  }
+  .radio-btn {
+    padding: 12px 32px;
+    background: var(--accent-blue);
+    color: var(--white);
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    box-shadow: 0 10px 20px rgba(0, 200, 255, 0.3);
+  }
+  .radio-caption {
+    margin-top: 16px;
+    font-size: 12px;
+    color: var(--white);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  /* ======== UTILITIES ======== */
+  .section-divider {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--ocean-cyan), transparent);
+    margin: 0 auto 20px;
+  }
+
+  /* Animate on scroll */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Glowing lines decoration */
+  .deco-line {
+    position: absolute;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--ocean-cyan), transparent);
+    opacity: 0.3;
+    pointer-events: none;
+  }
+
+  /* Number big display */
+  .big-stat {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 80px;
+    color: var(--accent-blue);
+    line-height: 1;
+    display: block;
+  }
+
+  #stats {
+    padding: 80px 24px;
+    background: rgba(14, 63, 101, 0.2);
+    border-top: 1px solid rgba(28,159,192,0.1);
+    border-bottom: 1px solid rgba(28,159,192,0.1);
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .stat-item .big-stat { margin-bottom: 8px; }
+  .stat-item .stat-label {
+    font-size: 13px;
+    letter-spacing: 0.25em;
+    color: var(--text-sub);
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    .memories-grid { grid-template-columns: 1fr; }
+    .memory-card.wide { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">ONL<span>-A</span></div>
+  <ul class="nav-links">
+    <li><a href="#philosophy">フィロソフィー</a></li>
+    <li><a href="#memories">思い出</a></li>
+    <li><a href="#radio">ラジオ</a></li>
+    <li><a href="#timeline">タイムライン</a></li>
+    <li><a href="#message">メッセージ</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg">
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
+  </div>
+  <div id="particles"></div>
+
+  <div class="hero-year">2024–2026</div>
+
+  <div class="hero-dash">
+    <div class="hero-dash-line"></div>
+    <span class="hero-dash-text">Section A — All A — オールA</span>
+    <div class="hero-dash-line rev"></div>
+  </div>
+
+  <h1 class="hero-title">
+    ONL-A<br>
+    <span>2年間の軌跡</span>
+  </h1>
+  <p class="hero-sub">人A＆ 〜 一人ひとりが、ともに。</p>
+
+  <div class="scroll-indicator">
+    <span>SCROLL</span>
+    <div class="scroll-line"></div>
+  </div>
+
+  <div class="hero-wave">
+    <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#0e3d65"/>
+    </svg>
+  </div>
+</section>
+
+<!-- STATS -->
+<section id="stats">
+  <div class="stats-grid">
+    <div class="stat-item reveal">
+      <span class="big-stat" id="stat1">0</span>
+      <div class="stat-label">日間の共に過ごした日々</div>
+    </div>
+    <div class="stat-item reveal">
+      <span class="big-stat" id="stat2">0</span>
+      <div class="stat-label">人の仲間たち</div>
+    </div>
+    <div class="stat-item reveal">
+      <span class="big-stat">∞</span>
+      <div class="stat-label">無限の思い出</div>
+    </div>
+    <div class="stat-item reveal">
+      <span class="big-stat">1</span>
+      <div class="stat-label">つのセクション・一つの志</div>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section id="philosophy">
+  <div class="deco-line" style="height:300px; left:5%; top:10%;"></div>
+  <div class="deco-line" style="height:200px; right:8%; top:30%;"></div>
+
+  <p class="section-label reveal">SECTION WAY</p>
+  <div class="section-divider reveal"></div>
+  <h2 class="section-title reveal">セクションAのWay</h2>
+
+  <div class="equation-container reveal">
+    <div class="equation-card">
+      <div class="equation-text">
+        一 <span class="plus">＋</span> 人 <span class="equals">＝</span> <span class="result">A</span>
+      </div>
+    </div>
+    <div class="equation-card">
+      <div class="equation-text">
+        一人 <span class="plus">＋</span> 一人 <span class="equals">＝</span> <span class="result">AA</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="pillars">
+    <div class="pillar-card reveal">
+      <div class="pillar-num">01</div>
+      <span class="pillar-tag">向上心</span>
+      <div class="pillar-title">一人一人が<br>志に向き合おう！</div>
+      <div class="pillar-desc">
+        それぞれが自分の目標を持ち、高め合い、前進し続ける。<br>
+        一人の志が、全体の志となる。
+      </div>
+    </div>
+    <div class="pillar-card reveal">
+      <div class="pillar-num">02</div>
+      <span class="pillar-tag">癒し</span>
+      <div class="pillar-title">一人一人と<br>ゆる〜く長〜く繋がろう！</div>
+      <div class="pillar-desc">
+        焦らず、無理せず、ゆったりと。<br>
+        長い時間をかけて育まれた絆は、一生のもの。
+      </div>
+    </div>
+    <div class="pillar-card reveal">
+      <div class="pillar-num">03</div>
+      <span class="pillar-tag">共助</span>
+      <div class="pillar-title">一人一人の志を<br>全員でサポートし合おう！</div>
+      <div class="pillar-desc">
+        誰一人孤独にしない。<br>
+        仲間の夢は、みんなの夢。共に高め合い、支え合う。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MEMORIES -->
+<section id="memories">
+  <p class="section-label reveal">MEMORIES</p>
+  <div class="section-divider reveal"></div>
+  <h2 class="section-title reveal">2年間の思い出</h2>
+
+  <div class="memories-grid">
+    <div class="memory-card wide reveal">
+      <div class="glow"></div>
+      <img src="img/icon-start.png" alt="Start" class="memory-icon">
+      <div class="memory-date">2022 — スタート</div>
+      <div class="memory-title">ONL-A、始まる</div>
+      <div class="memory-text">セクションAとして集まった仲間たち。最初は緊張していた顔も、すぐに笑顔に変わっていった。この瞬間から、私たちの「人A＆」の物語が始まった。</div>
+    </div>
+
+    <div class="memory-card reveal">
+      <div class="glow"></div>
+      <img src="img/icon-challenge.png" alt="Challenge" class="memory-icon">
+      <div class="memory-date">向上心の日々</div>
+      <div class="memory-title">それぞれの挑戦</div>
+      <div class="memory-text">一人一人が自分の志と向き合い、諦めずに走り続けた。</div>
+    </div>
+
+    <div class="memory-card reveal">
+      <div class="glow"></div>
+      <img src="img/icon-healing.png" alt="Healing" class="memory-icon">
+      <div class="memory-date">癒しの時間</div>
+      <div class="memory-title">ゆるく、長く</div>
+      <div class="memory-text">他愛のない会話、笑いあった瞬間。それが一番の宝物。</div>
+    </div>
+
+    <div class="memory-card reveal">
+      <div class="glow"></div>
+      <img src="img/icon-support.png" alt="Support" class="memory-icon">
+      <div class="memory-date">共助の精神</div>
+      <div class="memory-title">支え合った瞬間</div>
+      <div class="memory-text">誰かが苦しいとき、必ず誰かが隣にいた。それがONL-Aだった。</div>
+    </div>
+
+    <div class="memory-card wide reveal">
+      <div class="glow"></div>
+      <img src="img/icon-bond.png" alt="Bond" class="memory-icon">
+      <div class="memory-date">2024–2026~2027</div>
+      <div class="memory-title">深まっていく絆</div>
+      <div class="memory-text">時間を重ねるごとに、私たちの繋がりはどんどん深まっていった。一人一人の個性が輝き、それがセクション全体の輝きになっていく。「一人＋一人＝AA」——この方程式の意味を、身をもって知っていった2年間だった。</div>
+    </div>
+  </div>
+</section>
+
+<!-- RADIO -->
+<section id="radio">
+  <div class="deco-line" style="height:400px; right:5%; top:20%;"></div>
+  <p class="section-label reveal">RADIO</p>
+  <div class="section-divider reveal"></div>
+  <h2 class="section-title reveal">ONL-A ラジオ</h2>
+
+  <div class="radio-container reveal">
+    <a href="https://unique-diagram-488.notion.site/1108fd93dafc80eabb11e73f90c4321d?v=1108fd93dafc81518e8d000cfde52643" target="_blank" class="radio-link">
+      <img src="img/radio-preview.png" alt="ONL-A Radio Preview">
+      <div class="radio-overlay">
+        <div class="radio-btn">VIEW ON NOTION</div>
+        <div class="radio-caption">Click to open Radio Site</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section id="timeline">
+  <p class="section-label reveal">TIMELINE</p>
+  <div class="section-divider reveal"></div>
+  <h2 class="section-title reveal">ONL-Aの歩み</h2>
+
+  <div class="timeline-wrapper">
+    <div class="timeline-line"></div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-period">2024 SPRING</div>
+      <div class="timeline-content-title">セクションA 始動</div>
+      <div class="timeline-content-text">「ONL-A」として集まった仲間との最初の出会い。呼び名は「オールA」——全員でAを目指すという誓いの始まり。</div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-period">2024 SUMMER</div>
+      <div class="timeline-content-title">向上心に燃えた夏</div>
+      <div class="timeline-content-text">それぞれが志に向き合い、熱い議論を交わした日々。互いを知ることで、信頼が生まれ始めた。</div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-period">2024 AUTUMN</div>
+      <div class="timeline-content-title">絆が深まる秋</div>
+      <div class="timeline-content-text">共に笑い、共に悩んだ。一人一人の個性が見えてきて、「ゆる〜く長〜く」の意味が分かり始めた。</div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-period">2025</div>
+      <div class="timeline-content-title">共助の精神、開花</div>
+      <div class="timeline-content-text">誰かが挑戦するとき、全員で応援した。誰かが苦しむとき、全員で支えた。「一人一人の志を全員でサポート」が体現された年。</div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-period">2026</div>
+      <div class="timeline-content-title">2年間の集大成</div>
+      <div class="timeline-content-text">一 ＋ 人 ＝ A。一人 ＋ 一人 ＝ AA。私たちが証明した方程式。ONL-Aとして過ごした時間は、一生の宝物。</div>
+    </div>
+  </div>
+</section>
+
+<!-- MESSAGE -->
+<section id="message">
+  <div class="message-bg-text">ONL-A</div>
+  <span class="quote-mark reveal">"</span>
+  <p class="message-text reveal">
+    <strong>一人一人が志に向き合い</strong>、<br>
+    ゆる〜く長〜く繋がり続けて、<br>
+    全員でサポートし合った2年間。<br><br>
+    <strong>人A＆</strong> ——<br>
+    この記号に込められた想いは、<br>
+    これからも、ずっと続いていく。
+  </p>
+  <div class="message-sign reveal">— Section A, 2024–2026 —</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">ONL-A</div>
+  <div class="footer-sub">ALL A — オールA — Section A 2024–2026</div>
+  <div class="footer-phrase">
+    （向上心）一人一人が志に向き合おう！<br>
+    （癒し）一人一人とゆる〜く長〜く繋がろう！<br>
+    （共助）一人一人の志を全員でサポートし合おう！
+  </div>
+  <div class="footer-copy">一 ＋ 人 ＝ A &nbsp;／&nbsp; 一人 ＋ 一人 ＝ AA</div>
+</footer>
+
+<script>
+// Custom cursor
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+document.addEventListener('mousemove', e => {
+  mouseX = e.clientX; mouseY = e.clientY;
+  cursor.style.left = mouseX + 'px';
+  cursor.style.top = mouseY + 'px';
+});
+function animateRing() {
+  ringX += (mouseX - ringX) * 0.12;
+  ringY += (mouseY - ringY) * 0.12;
+  ring.style.left = ringX + 'px';
+  ring.style.top = ringY + 'px';
+  requestAnimationFrame(animateRing);
+}
+animateRing();
+
+// Particles
+const particleContainer = document.getElementById('particles');
+for (let i = 0; i < 60; i++) {
+  const p = document.createElement('div');
+  p.className = 'particle';
+  const size = Math.random() * 2 + 1;
+  p.style.cssText = `
+    left: ${Math.random() * 100}%;
+    top: ${Math.random() * 100}%;
+    width: ${size}px;
+    height: ${size}px;
+    --d: ${3 + Math.random() * 5}s;
+    --delay: ${Math.random() * 6}s;
+  `;
+  particleContainer.appendChild(p);
+}
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const timelineItems = document.querySelectorAll('.timeline-item');
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 80);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '-50px' });
+
+reveals.forEach(el => observer.observe(el));
+timelineItems.forEach(el => observer.observe(el));
+
+// Counter animation
+function animateCounter(el, target, suffix = '') {
+  let start = 0;
+  const duration = 2000;
+  const startTime = performance.now();
+  function update(now) {
+    const elapsed = now - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    el.textContent = Math.floor(eased * target) + suffix;
+    if (progress < 1) requestAnimationFrame(update);
+  }
+  requestAnimationFrame(update);
+}
+
+const statsObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      animateCounter(document.getElementById('stat1'), 730, '');
+      animateCounter(document.getElementById('stat2'), 20, '');
+      statsObserver.disconnect();
+    }
+  });
+}, { threshold: 0.3 });
+statsObserver.observe(document.getElementById('stats'));
+
+// Hover effects on cards
+document.querySelectorAll('.memory-card, .pillar-card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const rect = card.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    card.style.transform = `
+      translateY(-6px)
+      rotateX(${-y * 6}deg)
+      rotateY(${x * 6}deg)
+      scale(1.01)
+    `;
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = '';
+  });
+});
+</script>
+</body>
+</html>
